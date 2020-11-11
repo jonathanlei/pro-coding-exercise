@@ -19,7 +19,8 @@ function processForm(evt) {
   let sideA = parseInt(document.getElementById("side-a").value);
   let sideB = parseInt(document.getElementById("side-b").value);
   let [sideAisValid, sideBisValid] = validateTriangle(sideA, sideB);
-  setMessages(sideAisValid, sideBisValid, sideA, sideB);
+  let [aMsg, bMsg, calcMessage] = setMessages(sideAisValid, sideBisValid, sideA, sideB);
+  displayMessages(aMsg, bMsg, calcMessage);
 }
 /* Takes 2 sides and returns if triangle is valid. */
 function validateTriangle(sideA, sideB) {
@@ -32,9 +33,6 @@ function setMessages(sideAisValid, sideBisValid, sideA, sideB) {
   let aMsg = sideAisValid ? "" : "Invalid!";
   let bMsg = sideBisValid ? "" : "Invalid!";
   let calcMessage = "";
-  document.getElementById("a-msg").innerHTML = aMsg;
-  document.getElementById("b-msg").innerHTML = bMsg;
-
   if (sideAisValid && sideBisValid) {
     let area = calculateArea(sideA, sideB);
     let hypot = calculateHypotenuse(sideA, sideB);
@@ -43,8 +41,11 @@ function setMessages(sideAisValid, sideBisValid, sideA, sideB) {
       calcMessage += ` That's a really big triangle!`;
     }
     // console.log(`Area: ${area}, hypot:${hypot}, msg:${msg}`)
-  } else {
-    calcMessage = "";
   }
+  return [aMsg, bMsg, calcMessage];
+}
+function displayMessages(aMsg, bMsg, calcMessage) {
+  document.getElementById("a-msg").innerHTML = aMsg;
+  document.getElementById("b-msg").innerHTML = bMsg;
   document.getElementById("msg").innerHTML = calcMessage;
 }

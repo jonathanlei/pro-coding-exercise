@@ -26,6 +26,7 @@ it('should craft correct message', function () {
   //     "Hypotenuse is 5 and area is 6.");
   //
   // TODO test "big triangles" here
+  expect()
 });
 
 it('should generate correct results', function () {
