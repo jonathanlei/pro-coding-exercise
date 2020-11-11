@@ -1,15 +1,19 @@
-function mostPopular(s) {
-  let ltr_obj = {};
-  let high = 0;
-  let ltr;
-  for (let letter of s) {
-    const count = ltr_obj[letter] || 0;
-    const nc = count + 1;
-    ltr_obj[letter] = nc;
-    if (nc >= high) {
-      high = nc;
-      ltr = letter;
+/* take a word and return the most common letter in the word, in case of tie, return first letter reached the tie*/
+function mostPopular(word) {
+  let letterCount = {};
+  let highestCount = 0;
+  let mostPopularLetter;
+  for (let letter of word) {
+    // count the frequency of the letter
+    const currentCount = (letterCount[letter] || 0) + 1;
+    letterCount[letter] = currentCount;
+    // compare with the highest count 
+    if (currentCount > highestCount) {
+      highestCount = currentCount;
+      mostPopularLetter = letter;
     }
   }
-  return ltr;
+  return mostPopularLetter;
 }
+
+
