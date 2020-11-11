@@ -7,9 +7,9 @@ function wordScores(words) {
     for (let letter of word) {
       // convert to upper case
       letter = letter.toUpperCase();
-      // if it's not a letter, score is null 
-      if (!letterScores[letter]){
-        score=null;
+      // if it's not a letter, there is no score
+      if (!letterScores[letter]) {
+        score = null;
         break;
       }
       score += letterScores[letter];

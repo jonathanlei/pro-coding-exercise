@@ -11,19 +11,19 @@ function validateEdge(size) {
 
 function processForm(evt) {
   evt.preventDefault();
-  let a = +document.getElementById("side-a").value;
-  let b = +document.getElementById("side-b").value;
+  let sideA = +document.getElementById("side-a").value;
+  let sideB = +document.getElementById("side-b").value;
 
-  let aOk = validateEdge(a);
-  let bOk = validateEdge(b);
+  let sideAisValid = validateEdge(a);
+  let sideBisValid = validateEdge(b);
 
-  let aMsg = aOk ? "" : "Invalid!";
-  let bMsg = bOk ? "" : "Invalid!";
+  let aMsg = sideAisValid ? "" : "Invalid!";
+  let bMsg = sideBisValid ? "" : "Invalid!";
 
   let msg;
 
-  if (aOk && bOk) {
-    let area = a * b / 2;
+  if (sideAisValid && sideBisValid) {
+    let area = sideA * sideB / 2;
     let hypot = Math.floor(Math.sqrt(a * a + b * b));
     let msg = `Hypotenuse is ${hypot} and area is ${area}.`;
     if (area > 50) {
